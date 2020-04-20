@@ -6,16 +6,16 @@ const errorRoute = require('./middlewares/error-handler');
 
 const app = express();
 
-//helper routes
+// helper routes
 app.use(bodyParser.json());
 app.use(CORS);
 
-//custom routes
+// custom routes
 app.get('/', (req, res, next) => {
   res.send({ message: 'root route' });
 });
 
-//error handling
+// error handling
 app.use(errorRoute);
 
 app.listen(5000);

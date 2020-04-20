@@ -3,8 +3,8 @@ module.exports = (err, req, res, next) => {
     return next(err);
   }
   res.status(err.code || 500);
-  res.send({ 
+  res.send({
     error: err.message,
-    code: err.code
-   });
+    code: err.code,
+  });
 };
