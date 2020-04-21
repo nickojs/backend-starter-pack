@@ -16,5 +16,5 @@ module.exports = {
       return next(new ErrorHandler('No image provided', 422));
     }
     next();
-  },
+  }
 };
