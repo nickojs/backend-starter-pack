@@ -19,6 +19,12 @@
   },
   "rules": {
     "linebreak-style": 0,
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
     "consistent-return": 0,
     "import/newline-after-import": 0,
     "nonblock-statement-body-position": "warn",
