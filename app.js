@@ -1,21 +1,12 @@
 require('dotenv').config();
 const express = require('express');
-const bodyParser = require('body-parser');
-const CORS = require('./middlewares/CORS');
-const errorRoute = require('./middlewares/error-handler');
+const Server = require('./Server');
+const server = new Server(express);
 
-const app = express();
-
-// helper routes
-app.use(bodyParser.json());
-app.use(CORS);
-
-// custom routes
-app.get('/', (req, res, next) => {
-  res.send({ message: 'root route' });
-});
-
-// error handling
-app.use(errorRoute);
-
-app.listen(5000);
+server.initDatabase()
+  .then(() => {
+    server.setMiddlewares();
+    server.setRoutes();
+    server.run();
+  })
+  .catch((err) => console.log('error: ', err));
